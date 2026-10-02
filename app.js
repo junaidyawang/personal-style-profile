@@ -717,8 +717,8 @@ function renderResults() {
   const subtitleEl = document.getElementById('res-style-subtitle');
   const pillsContainer = document.getElementById('res-summary-pills');
 
-  codeEl.textContent = styleCode;
-  codeCircleEl.textContent = styleCode;
+  if (codeEl) codeEl.textContent = styleCode;
+  if (codeCircleEl) codeCircleEl.textContent = styleCode;
 
   // Participant Name Display
   const nameSpan = document.getElementById('res-participant-name');
