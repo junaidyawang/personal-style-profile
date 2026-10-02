@@ -781,27 +781,37 @@ function renderResults() {
 
       <!-- Infographic Comparison Visual -->
       <div class="infographic-spectrum-card">
-        <div class="spectrum-pole-labels">
-          <div class="pole-label ${isSideA ? 'active-pole' : ''}">
-            <span class="pole-code">${dim.sideA.code}</span>
-            <span class="pole-title">${dim.sideA.title}</span>
-            <span class="pole-score">${scoreA}</span>
+        <div class="spectrum-stats-grid">
+          <div class="spectrum-col pole-a ${isSideA ? 'active-pole' : ''}">
+            <div class="pole-header">
+              <span class="pole-code">${dim.sideA.code}</span>
+              <span class="pole-title">${dim.sideA.title}</span>
+            </div>
+            <div class="pole-score-badge">
+              <span class="score-num">${scoreA}</span>
+              <span class="score-sub">(${pctA}%)</span>
+            </div>
           </div>
-          <div class="spectrum-vs-badge">VS</div>
-          <div class="pole-label ${!isSideA ? 'active-pole' : ''}">
-            <span class="pole-score">${scoreB}</span>
-            <span class="pole-title">${dim.sideB.title}</span>
-            <span class="pole-code">${dim.sideB.code}</span>
+
+          <div class="spectrum-center-divider">
+            <span class="vs-text">VS</span>
+          </div>
+
+          <div class="spectrum-col pole-b ${!isSideA ? 'active-pole' : ''}">
+            <div class="pole-header">
+              <span class="pole-title">${dim.sideB.title}</span>
+              <span class="pole-code">${dim.sideB.code}</span>
+            </div>
+            <div class="pole-score-badge">
+              <span class="score-num">${scoreB}</span>
+              <span class="score-sub">(${pctB}%)</span>
+            </div>
           </div>
         </div>
 
         <div class="meter-track-infographic">
-          <div class="meter-segment-a" style="width: ${pctA}%;">
-            ${scoreA > 0 ? `<span class="segment-label">${pctA}%</span>` : ''}
-          </div>
-          <div class="meter-segment-b" style="width: ${pctB}%;">
-            ${scoreB > 0 ? `<span class="segment-label">${pctB}%</span>` : ''}
-          </div>
+          <div class="meter-segment-a" style="width: ${pctA}%;"></div>
+          <div class="meter-segment-b" style="width: ${pctB}%;"></div>
         </div>
       </div>
 
