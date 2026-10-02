@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PSP – Personal Style Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-wrapper">
+    <!-- Header / Brand -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-badge" title="Personal Style Profile">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+          </span>
+          <span class="brand-title">Personal Style Profile</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <button id="btn-header-share" class="btn btn-action btn-sm no-print" title="Share assessment or get QR code">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            Share & QR
+          </button>
+          <div class="header-tagline">Assessment v5.0</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dynamic Screen Container -->
+    <main id="app-container" class="main-container" role="main">
+      <!-- Screen 1: Welcome -->
+      <section id="screen-welcome" class="screen active">
+        <div class="card hero-card">
+          <h1 class="hero-title">Discover How You Naturally Work</h1>
+          <p class="hero-desc">
+            Discover how you naturally process ideas, see situations, make decisions and move forward.
+            Built to spark richer reflection and collaborative conversations between mentees and mentors.
+          </p>
+
+          <div class="principles-grid">
+            <div class="principle-item">
+              <div class="principle-icon">🧭</div>
+              <div>
+                <h4>Developmental</h4>
+                <p>Designed for growth and mutual understanding, not testing or ratings.</p>
+              </div>
+            </div>
+            <div class="principle-item">
+              <div class="principle-icon">⚖️</div>
+              <div>
+                <h4>No Right or Wrong</h4>
+                <p>Every style brings real value. Your profile reflects preferences, not limitations.</p>
+              </div>
+            </div>
+            <div class="principle-item">
+              <div class="principle-icon">🌱</div>
+              <div>
+                <h4>Mentoring Focus</h4>
+                <p>Identify what you need to thrive and when you may want to flex.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="notice-box">
+            <strong>Important distinction:</strong> PSP is an independent developmental tool. It does not measure intelligence or job suitability.
+          </div>
+
+          <div class="name-input-group">
+            <label for="participant-name" class="input-label">Your Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon">👤</span>
+              <input type="text" id="participant-name" class="text-input" placeholder="Enter your full name or nickname" autocomplete="name" />
+            </div>
+          </div>
+
+          <button id="btn-to-instructions" class="btn btn-primary btn-large">
+            Start My PSP
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- Screen 2: Instructions -->
+      <section id="screen-instructions" class="screen">
+        <div class="card instruction-card">
+          <div class="card-step">Step 1 of 3</div>
+          <h2 class="card-title">Before You Begin</h2>
+          <p class="card-subtitle">Keep these simple guidelines in mind as you answer:</p>
+
+          <ul class="instructions-list">
+            <li>
+              <span class="list-bullet">✓</span>
+              <div>
+                <strong>There are no right or wrong answers.</strong>
+                <p>Every response helps build a clearer picture of your natural approach.</p>
+              </div>
+            </li>
+            <li>
+              <span class="list-bullet">✓</span>
+              <div>
+                <strong>Choose what feels more naturally like you.</strong>
+                <p>Avoid what you think your manager, mentor, or colleagues would prefer.</p>
+              </div>
+            </li>
+            <li>
+              <span class="list-bullet">✓</span>
+              <div>
+                <strong>Think about genuine choice.</strong>
+                <p>If both choices sound like you, pick the one that generally feels more comfortable, effortless, or instinctive.</p>
+              </div>
+            </li>
+            <li>
+              <span class="list-bullet">✓</span>
+              <div>
+                <strong>25 short questions.</strong>
+                <p>Questions 1–24 determine your style profile. Question 25 captures the single most useful thing for your mentor to know.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="button-group">
+            <button id="btn-back-welcome" class="btn btn-secondary">Back</button>
+            <button id="btn-start-questions" class="btn btn-primary">
+              Let's Begin
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screens 3–27: Question Flow -->
+      <section id="screen-question" class="screen">
+        <div class="card question-card">
+          <div class="progress-bar-container">
+            <div class="progress-info">
+              <span id="question-counter" class="counter-text">Question 1 of 25</span>
+              <span id="progress-percent" class="counter-sub">4%</span>
+            </div>
+            <div class="progress-track">
+              <div id="progress-fill" class="progress-fill" style="width: 4%;"></div>
+            </div>
+          </div>
+
+          <div class="question-body">
+            <h3 id="question-prompt" class="question-text">Loading question prompt...</h3>
+            <div id="question-help" class="question-help-text" style="display:none;"></div>
+
+            <!-- Paired Choice Container (Q1-Q24) -->
+            <div id="options-pair" class="options-container">
+              <button id="btn-option-a" class="option-btn" data-choice="A">
+                <span class="option-letter">A</span>
+                <span id="text-option-a" class="option-text">Option A</span>
+              </button>
+              <button id="btn-option-b" class="option-btn" data-choice="B">
+                <span class="option-letter">B</span>
+                <span id="text-option-b" class="option-text">Option B</span>
+              </button>
+            </div>
+
+            <!-- Mentor Statement Options (Q25) -->
+            <div id="options-q25" class="options-list-grid" style="display:none;">
+              <!-- Populated dynamically via JS -->
+            </div>
+          </div>
+
+          <div class="question-footer">
+            <button id="btn-prev-question" class="btn btn-secondary btn-sm" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+              Previous
+            </button>
+            <span class="hint-key">Select an option to advance, or use Previous to review</span>
+            <button id="btn-next-question" class="btn btn-secondary btn-sm" style="display:none;">
+              Next
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screen 28: Transition / Calculating -->
+      <section id="screen-calculating" class="screen">
+        <div class="card loading-card">
+          <div class="pulse-spinner"></div>
+          <h2 class="loading-title">Looking across your responses...</h2>
+          <p class="loading-sub">Preparing your Personal Style Profile insights.</p>
+        </div>
+      </section>
+
+
+
+      <!-- Screen 30: Results & Mentor View -->
+      <section id="screen-results" class="screen">
+        <!-- View Toggle & Actions Bar -->
+        <div class="results-toolbar no-print">
+          <div class="view-switch-tabs">
+            <button id="tab-participant" class="tab-btn active" data-view="participant">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Participant Profile
+            </button>
+            <button id="tab-mentor" class="tab-btn" data-view="mentor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Mentor Brief View
+            </button>
+          </div>
+
+          <div class="toolbar-actions">
+            <button id="btn-qr-share" class="btn btn-action" title="Open QR Code for Mobile">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><circle cx="6.5" cy="6.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/><circle cx="17.5" cy="17.5" r="1.5" fill="currentColor"/><circle cx="6.5" cy="17.5" r="1.5" fill="currentColor"/></svg>
+              Mobile QR
+            </button>
+            <button id="btn-print" class="btn btn-action" title="Print or save as PDF">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+              Print / Save PDF
+            </button>
+            <button id="btn-copy-summary" class="btn btn-action" title="Copy text summary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy Summary
+            </button>
+            <button id="btn-retake" class="btn btn-secondary btn-sm">Retake</button>
+          </div>
+        </div>
+
+        <!-- 1. Participant View -->
+        <div id="view-participant" class="result-view-panel active">
+          <!-- Summary Header Card -->
+          <div class="card result-hero-card">
+            <div class="result-hero-top">
+              <div>
+                <span class="badge-pill">Your Personal Style Profile</span>
+                <h1 class="result-title"><span id="res-participant-name"></span>Your PSP Style: <span id="res-style-code" class="highlight-code">----</span></h1>
+                <p id="res-style-subtitle" class="result-style-subtitle">Processing • Information • Decision • Action</p>
+              </div>
+              <div class="code-badge-circle">
+                <span id="code-circle-text">PSP</span>
+              </div>
+            </div>
+
+            <div class="psp-summary-pills" id="res-summary-pills">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Dimension Cards Grid -->
+          <div class="dimensions-detail-grid" id="res-dimensions-grid">
+            <!-- 4 Cards dynamically rendered via JS -->
+          </div>
+
+          <!-- Question 25 Highlight -->
+          <div class="card mentor-card">
+            <div class="card-step">Question 25 Reflection</div>
+            <h3 class="mentor-section-title">One Thing My Mentor Should Know About Me</h3>
+            <blockquote id="res-q25-statement" class="q25-quote">
+              "..."
+            </blockquote>
+          </div>
+
+          <!-- Reflection & Conversation Starters -->
+          <div class="card conversation-card">
+            <h3 class="conversation-title">A Useful Conversation With Your Mentor</h3>
+            <p class="conversation-sub">Use these exploratory prompts during your next 1-on-1 catch-up:</p>
+
+            <div class="discussion-prompts-grid">
+              <div class="prompt-box">
+                <span class="prompt-num">1</span>
+                <p><strong>What helps you learn and contribute at your best?</strong> Reflect on situations where your natural style made work feel energized and effortless.</p>
+              </div>
+              <div class="prompt-box">
+                <span class="prompt-num">2</span>
+                <p><strong>Where might your natural style be most useful in your role?</strong> Identify current projects where your perspective adds distinct value.</p>
+              </div>
+              <div class="prompt-box">
+                <span class="prompt-num">3</span>
+                <p><strong>When might you need to flex to the opposite style?</strong> Notice scenarios where adapting your approach could yield better collaboration.</p>
+              </div>
+              <div class="prompt-box">
+                <span class="prompt-num">4</span>
+                <p><strong>What could your mentor do that would help you grow?</strong> Agree on specific practices (e.g., meeting prep time, whiteboard brainstorming).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Core Principle Footer -->
+          <div class="principle-banner">
+            <p class="principle-quote">"My style is a preference, not a limitation. Understanding my natural style helps me recognise what works for me — and when I may need to flex."</p>
+          </div>
+        </div>
+
+        <!-- 2. Mentor Brief View -->
+        <div id="view-mentor" class="result-view-panel">
+          <div class="card mentor-brief-card">
+            <div class="mentor-brief-header">
+              <span class="badge-pill">Mentor Summary Brief</span>
+              <h2><span id="mentor-participant-name">Participant</span>'s PSP Style: <span id="mentor-style-code" class="highlight-code">----</span></h2>
+              <p class="mentor-brief-intro">A concise guide to support productive coaching, communication, and development.</p>
+            </div>
+
+            <div class="mentor-brief-section">
+              <h3>Natural Working Preferences</h3>
+              <ul id="mentor-pref-list" class="mentor-bullet-list">
+                <!-- Populated via JS -->
+              </ul>
+            </div>
+
+            <div class="mentor-brief-section highlight-box">
+              <h3>One Thing Mentee Wants You to Know</h3>
+              <blockquote id="mentor-q25-quote" class="q25-quote">
+                "..."
+              </blockquote>
+            </div>
+
+            <div class="mentor-brief-section conversation-starter-box">
+              <h3>Recommended Conversation Starter</h3>
+              <p class="starter-text">
+                <strong>"Which part of this profile feels most useful for me to understand about you?"</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer no-print">
+      <div class="footer-inner">
+        <p>PSP – Personal Style Profile © 2026. Designed for self-awareness and developmental mentoring dialogues.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Mobile QR Code Modal -->
+  <div id="qr-modal" class="modal-backdrop no-print">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📱 Open on Mobile Device</h3>
+        <button id="btn-close-qr" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Scan this QR code with your phone camera to take or view the assessment on mobile:</p>
+        <div class="qr-code-wrapper">
+          <img id="qr-image" src="" alt="PSP Mobile QR Code" class="qr-image" />
+        </div>
+        <p id="qr-url-text" class="qr-url-text"></p>
+        <button id="btn-copy-link" class="btn btn-secondary btn-sm" style="margin-top: 0.75rem;">Copy Link</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="alert">Copied to clipboard!</div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
