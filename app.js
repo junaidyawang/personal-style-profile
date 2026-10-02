@@ -528,6 +528,10 @@ function setupEventListeners() {
     openQrModal();
   });
 
+  document.getElementById('btn-welcome-qr')?.addEventListener('click', () => {
+    openQrModal();
+  });
+
   document.getElementById('btn-qr-share')?.addEventListener('click', () => {
     openQrModal();
   });
