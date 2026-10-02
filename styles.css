@@ -655,11 +655,11 @@ body {
 }
 
 .result-view-panel {
-  display: none;
+  display: none !important;
 }
 
 .result-view-panel.active {
-  display: block;
+  display: flex !important;
 }
 
 /* User Custom Results & Mentor Card Design System */
@@ -668,7 +668,6 @@ body {
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: #1f2937;
-  display: flex;
   flex-direction: column;
   gap: 2rem;
 }
