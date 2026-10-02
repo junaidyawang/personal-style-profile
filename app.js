@@ -402,7 +402,7 @@ function calculatePSP(answers, bestFitOverrides = {}) {
       // 3 - 3 Balanced: Context Dependent
       preference = "A";
       codeLetter = dimMeta.sideA.code;
-      strength = "Balanced / Context Dependent (3–3)";
+      strength = "Balanced (3–3)";
     }
 
     dimensionResults[dim] = {
@@ -753,10 +753,6 @@ function renderResults() {
     const scoreA = res.scoreA;
     const scoreB = res.scoreB;
 
-    let badgeClass = 'strength-balanced';
-    if (res.strength.includes('Clear')) badgeClass = 'strength-clear';
-    else if (res.strength.includes('Leaning')) badgeClass = 'strength-leaning';
-
     const card = document.createElement('div');
     card.className = 'dimension-card';
 
@@ -776,7 +772,6 @@ function renderResults() {
             <div class="dim-category-name">${dim.name}</div>
           </div>
         </div>
-        <span class="dim-strength-badge ${badgeClass}">${res.strength}</span>
       </div>
 
       <!-- Infographic Comparison Visual -->
@@ -902,10 +897,10 @@ function copySummaryToClipboard() {
 ${participantHeader}PSP Style Code: ${styleCode}
 
 PREFERENCES:
-• Processing Style: ${dimensionResults[1].chosenSide.title} (${dimensionResults[1].strength})
-• Information Focus: ${dimensionResults[2].chosenSide.title} (${dimensionResults[2].strength})
-• Decision Approach: ${dimensionResults[3].chosenSide.title} (${dimensionResults[3].strength})
-• Execution Style: ${dimensionResults[4].chosenSide.title} (${dimensionResults[4].strength})
+• Processing Style: ${dimensionResults[1].chosenSide.title}
+• Information Focus: ${dimensionResults[2].chosenSide.title}
+• Decision Approach: ${dimensionResults[3].chosenSide.title}
+• Execution Style: ${dimensionResults[4].chosenSide.title}
 
 ONE THING MY MENTOR SHOULD KNOW:
 "${q25Obj.text}"
