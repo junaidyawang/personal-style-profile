@@ -737,10 +737,10 @@ function renderResults() {
   subtitleEl.textContent = `${p1} • ${p2} • ${p3} • ${p4}`;
 
   pillsContainer.innerHTML = `
-    <span class="summary-pill">${p1}</span>
-    <span class="summary-pill">${p2}</span>
-    <span class="summary-pill">${p3}</span>
-    <span class="summary-pill">${p4}</span>
+    <span class="summary-pill pill primary">${p1}</span>
+    <span class="summary-pill pill primary">${p2}</span>
+    <span class="summary-pill pill primary">${p3}</span>
+    <span class="summary-pill pill primary">${p4}</span>
   `;
 
   const dimGrid = document.getElementById('res-dimensions-grid');
