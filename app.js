@@ -714,7 +714,6 @@ function renderResults() {
 
   const codeEl = document.getElementById('res-style-code');
   const codeCircleEl = document.getElementById('code-circle-text');
-  const subtitleEl = document.getElementById('res-style-subtitle');
   const pillsContainer = document.getElementById('res-summary-pills');
 
   if (codeEl) codeEl.textContent = styleCode;
@@ -734,7 +733,6 @@ function renderResults() {
   const p2 = dimensionResults[2].chosenSide.title;
   const p3 = dimensionResults[3].chosenSide.title;
   const p4 = dimensionResults[4].chosenSide.title;
-  subtitleEl.textContent = `${p1} • ${p2} • ${p3} • ${p4}`;
 
   pillsContainer.innerHTML = `
     <span class="summary-pill pill primary">${p1}</span>
