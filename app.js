@@ -607,6 +607,7 @@ function renderCurrentQuestion() {
   const helpEl = document.getElementById('question-help');
   const optionsPair = document.getElementById('options-pair');
   const optionsQ25 = document.getElementById('options-q25');
+  const hintKeyEl = document.querySelector('.hint-key');
 
   if (!isQ25) {
     const qData = QUESTIONS[index];
@@ -615,6 +616,10 @@ function renderCurrentQuestion() {
 
     optionsPair.style.display = 'flex';
     optionsQ25.style.display = 'none';
+
+    if (hintKeyEl) {
+      hintKeyEl.textContent = 'Select an option to advance, or use Previous to review';
+    }
 
     const btnA = document.getElementById('btn-option-a');
     const btnB = document.getElementById('btn-option-b');
@@ -638,12 +643,16 @@ function renderCurrentQuestion() {
       }
     }
   } else {
-    // Question 25: Verbatim reflection
+    // Question 25: Pure blank open-ended verbatim reflection
     promptEl.textContent = QUESTION_25.prompt;
     helpEl.style.display = 'none';
 
     optionsPair.style.display = 'none';
     optionsQ25.style.display = 'flex';
+
+    if (hintKeyEl) {
+      hintKeyEl.textContent = 'Key in your reflection above in your own words, then click Continue to Results';
+    }
 
     if (nextBtn) {
       nextBtn.style.display = 'none';
