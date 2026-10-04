@@ -403,7 +403,7 @@ body {
   margin-top: 0.2rem;
 }
 
-/* Q25 Options List */
+/* Q25 Options List & Verbatim Textarea */
 .options-list-grid {
   display: flex;
   flex-direction: column;
@@ -424,6 +424,46 @@ body {
 .options-list-grid .option-text {
   font-size: 0.98rem;
   margin-top: 0.1rem;
+}
+
+.q25-verbatim-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.q25-textarea {
+  width: 100%;
+  min-height: 140px;
+  padding: 1.25rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  resize: vertical;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.q25-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: #ffffff;
+}
+
+.q25-textarea::placeholder {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.q25-actions-row {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .question-footer {
@@ -1178,14 +1218,16 @@ body {
 }
 
 .q25-quote {
-  font-size: 1.35rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 500;
   color: var(--accent-indigo);
-  line-height: 1.5;
+  line-height: 1.6;
   background: #f5f3ff;
   padding: 1.5rem;
   border-radius: var(--radius-md);
   font-style: normal;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* Conversation Starters */

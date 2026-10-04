@@ -332,17 +332,8 @@ const QUESTIONS = [
 
 const QUESTION_25 = {
   id: 25,
-  prompt: "One Thing My Mentor Should Know About Me (Choose ONE statement):",
-  options: [
-    { id: "A", text: "Talking something through often helps me work out what I really think." },
-    { id: "B", text: "Give me some time to think and I will usually have more to contribute." },
-    { id: "C", text: "I engage more quickly when I understand the bigger picture and where something could lead." },
-    { id: "D", text: "Specific examples and clear details help me understand something quickly." },
-    { id: "E", text: "I value questions that challenge my reasoning and help me test whether something makes sense." },
-    { id: "F", text: "I value conversations that consider people's circumstances and the impact on them." },
-    { id: "G", text: "Clear direction and next steps help me move forward." },
-    { id: "H", text: "I work well when there is room to explore and adjust as I learn." }
-  ]
+  prompt: "One Thing People Should Know About Me",
+  placeholder: "Share in your own words what helps you work at your best, how you like to communicate, or what you'd like others to understand about you..."
 };
 
 const MENTOR_CONSIDERATIONS = {
@@ -515,6 +506,10 @@ function setupEventListeners() {
     finalizeCalculation();
   });
 
+  document.getElementById('btn-submit-q25')?.addEventListener('click', () => {
+    submitQuestion25Verbatim();
+  });
+
   document.getElementById('tab-participant')?.addEventListener('click', () => switchResultView('participant'));
   document.getElementById('tab-mentor')?.addEventListener('click', () => switchResultView('mentor'));
 
@@ -643,7 +638,7 @@ function renderCurrentQuestion() {
       }
     }
   } else {
-    // Question 25
+    // Question 25: Verbatim reflection
     promptEl.textContent = QUESTION_25.prompt;
     helpEl.style.display = 'none';
 
@@ -654,25 +649,20 @@ function renderCurrentQuestion() {
       nextBtn.style.display = 'none';
     }
 
-    optionsQ25.innerHTML = '';
-    QUESTION_25.options.forEach(opt => {
-      const isSelected = state.question25Answer === opt.id;
-      const btn = document.createElement('button');
-      btn.className = `option-btn ${isSelected ? 'selected' : ''}`;
-      btn.innerHTML = `
-        <span class="option-letter">${opt.id}</span>
-        <span class="option-text">${opt.text}</span>
-      `;
-      btn.addEventListener('click', () => {
-        state.question25Answer = opt.id;
-        renderCurrentQuestion();
-        setTimeout(() => {
-          proceedToCalculation();
-        }, 220);
-      });
-      optionsQ25.appendChild(btn);
-    });
+    const textarea = document.getElementById('input-q25-text');
+    if (textarea) {
+      textarea.value = state.question25Answer || '';
+      textarea.placeholder = QUESTION_25.placeholder;
+      setTimeout(() => textarea.focus(), 100);
+    }
   }
+}
+
+function submitQuestion25Verbatim() {
+  const textarea = document.getElementById('input-q25-text');
+  const userText = (textarea?.value || '').trim();
+  state.question25Answer = userText;
+  proceedToCalculation();
 }
 
 function handleSelectOption(optionIndex) {
@@ -841,10 +831,13 @@ function renderResults() {
     dimGrid.appendChild(card);
   }
 
-  const q25Obj = QUESTION_25.options.find(o => o.id === state.question25Answer) || QUESTION_25.options[0];
+  const verbatimText = (state.question25Answer && state.question25Answer.trim()) 
+    ? state.question25Answer.trim() 
+    : "No personal note provided.";
+
   const q25QuoteEl = document.getElementById('res-q25-statement');
   if (q25QuoteEl) {
-    q25QuoteEl.textContent = `"${q25Obj.text}"`;
+    q25QuoteEl.textContent = `"${verbatimText}"`;
   }
 
   const mentorCodeEl = document.getElementById('mentor-style-code');
@@ -860,7 +853,7 @@ function renderResults() {
 
   const mentorQ25Quote = document.getElementById('mentor-q25-quote');
   if (mentorQ25Quote) {
-    mentorQ25Quote.textContent = `"${q25Obj.text}"`;
+    mentorQ25Quote.textContent = `"${verbatimText}"`;
   }
 
 }
@@ -887,7 +880,9 @@ function switchResultView(viewType) {
 function copySummaryToClipboard() {
   if (!state.calculationResult) return;
   const { dimensionResults, styleCode } = state.calculationResult;
-  const q25Obj = QUESTION_25.options.find(o => o.id === state.question25Answer) || QUESTION_25.options[0];
+  const verbatimText = (state.question25Answer && state.question25Answer.trim())
+    ? state.question25Answer.trim()
+    : "No personal note provided.";
   const participantHeader = state.participantName ? `Participant: ${state.participantName}\n` : '';
 
   const summaryText = `
@@ -900,10 +895,10 @@ PREFERENCES:
 • Decision Approach: ${dimensionResults[3].chosenSide.title}
 • Execution Style: ${dimensionResults[4].chosenSide.title}
 
-ONE THING MY MENTOR SHOULD KNOW:
-"${q25Obj.text}"
+ONE THING PEOPLE SHOULD KNOW ABOUT ME:
+"${verbatimText}"
 
-MENTOR CONVERSATION STARTER:
+RECOMMENDED CONVERSATION STARTER:
 "Which part of this profile feels most useful for me to understand about you?"
 ====================================
 `.trim();

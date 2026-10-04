@@ -166,9 +166,15 @@
               </button>
             </div>
 
-            <!-- Mentor Statement Options (Q25) -->
-            <div id="options-q25" class="options-list-grid" style="display:none;">
-              <!-- Populated dynamically via JS -->
+            <!-- Mentor Statement Options (Q25) replaced with Verbatim Text Area -->
+            <div id="options-q25" class="q25-verbatim-container" style="display:none;">
+              <textarea id="input-q25-text" class="q25-textarea" rows="4" placeholder="Type here what you would like people / your mentor to know about you (e.g. your communication style, how you like to receive feedback, how you process ideas)..."></textarea>
+              <div class="q25-actions-row">
+                <button id="btn-submit-q25" class="btn btn-primary">
+                  Continue to Results
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -204,11 +210,11 @@
           <div class="view-switch-tabs">
             <button id="tab-participant" class="tab-btn active" data-view="participant">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              Participant Profile
+              Personal Profile
             </button>
             <button id="tab-mentor" class="tab-btn" data-view="mentor">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              Mentor Brief View
+              Summary
             </button>
           </div>
 
@@ -248,8 +254,8 @@
 
           <!-- Question 25 Highlight -->
           <div class="card mentor-card">
-            <div class="card-step">Question 25 Reflection</div>
-            <h3 class="mentor-section-title">One Thing My Mentor Should Know About Me</h3>
+            <div class="card-step">Reflection</div>
+            <h3 class="mentor-section-title">One Thing People Should Know About Me</h3>
             <blockquote id="res-q25-statement" class="q25-quote">
               "..."
             </blockquote>
@@ -265,7 +271,7 @@
         <div id="view-mentor" class="result-view-panel psp-results">
           <div class="card mentor-brief-card profile-card mentor-card">
             <div class="mentor-brief-header card-header">
-              <span class="badge-pill view-tag mentor-tag">Mentor Summary Brief</span>
+              <span class="badge-pill view-tag mentor-tag">Summary Brief</span>
               <h2><span id="mentor-participant-name">Participant</span>'s Profile Brief</h2>
               <p class="mentor-brief-intro subtitle">A concise guide to support productive coaching, communication, and development.</p>
             </div>
@@ -278,7 +284,7 @@
             </div>
 
             <div class="mentor-brief-section highlight-box mentor-callout highlight">
-              <h3>One Thing Mentee Wants You to Know</h3>
+              <h3>One Thing People Should Know About Me</h3>
               <blockquote id="mentor-q25-quote" class="q25-quote quote-text">
                 "..."
               </blockquote>

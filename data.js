@@ -412,18 +412,8 @@ export const QUESTIONS = [
 
 export const QUESTION_25 = {
   id: 25,
-  title: "One Thing My Mentor Should Know About Me",
-  instruction: "Choose ONE statement that you believe would be most useful for your mentor to understand about you.",
-  options: [
-    { key: "A", text: "Talking things through often helps me develop my thinking." },
-    { key: "B", text: "Give me some time to think and I will usually contribute more." },
-    { key: "C", text: "I engage quickly when I understand the bigger picture and where something could lead." },
-    { key: "D", text: "Specific examples and clear details help me understand something quickly." },
-    { key: "E", text: "I appreciate questions that challenge my reasoning and help me test whether something makes sense." },
-    { key: "F", text: "I value conversations that consider the people, relationships and circumstances involved." },
-    { key: "G", text: "Clear expectations and next steps help me move forward." },
-    { key: "H", text: "Give me room to explore and adjust as I learn." }
-  ]
+  title: "One Thing People Should Know About Me",
+  instruction: "Share in your own words what you believe would be most useful for people / your mentor to understand about you."
 };
 
 // Map of the 16 PSP Style Codes
